@@ -6,8 +6,16 @@ saludar=function(){
     let mensaje="Hola "+nombreIngresado+" "+apellidoIngresado+" tienes "+edadIngresada+" años y mides "+estaturaIngresada+" mts";
     mostrarTexto("lblResultado",mensaje);
     mostrarImagen("imgSaludo","./imagenes/d9e6f2b361b0451d3ca8af5a574c4bf6752fb516r1-480-480_hq.gif");
+    mostrarTextoEnCaja("txtNombre","");
+    mostrarTextoEnCaja("txtApellido","");
+    mostrarTextoEnCaja("txtEdad","");
+    mostrarTextoEnCaja("txtEstatura","");
 }
 
+mostrarTextoEnCaja=function(idComponente,mensaje){
+    let componente=document.getElementById(idComponente);
+    componente.value=mensaje;
+}
 mostrarTexto=function(idComponente,mensaje){
     let componente=document.getElementById(idComponente);
     componente.innerText=mensaje;
