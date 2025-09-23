@@ -6,4 +6,9 @@ calcularPromedioNotas=function(){
     let resultado=promedio.toFixed(2);
     let mensaje="El promedio es: "+resultado;
     mostrarTexto("resultado",mensaje);
+    if(resultado>7){
+        mostrarImagen("imagen","./imagenes/36Tr.gif");
+    }else{
+        mostrarImagen("imagen","./imagenes/soy-un-fracaso-total-finn.gif");
+    }
 }
