@@ -105,9 +105,50 @@ obtenerProvincia = function (placa) {
     };
     let primeraLetra=placa.charAt(0);
     if(esMayuscula(primeraLetra)){
+        mostrarTexto("lblError2","");
         return provinciaPorPlaca[primeraLetra];
     }else{
+        mostrarTexto("lblProvincia","");
         return "PROVINCIA INCORRECTA";
+    }
+
+}
+obtenerTipoVehiculo = function (placa) {
+    let tipoVehiculo = {
+        A: "Vehiculos comerciales (como Taxis o Autobuses)",
+        Z: "Vehiculos comerciales (como Taxis o Autobuses)",
+        E: "Vehiculos gubernamentales",
+        X: "Vehiculos de uso oficial",
+        S: "Vehiculos del gobierno provincial",
+        M: "Vehiculos municipales",
+        B: "Vehiculo particular (privado)", 
+        C: "Vehiculo particular (privado)",
+        D: "Vehiculo particular (privado)",
+        F: "Vehiculo particular (privado)",
+        G: "Vehiculo particular (privado)",
+        H: "Vehiculo particular (privado)",
+        I: "Vehiculo particular (privado)",
+        J: "Vehiculo particular (privado)",
+        K: "Vehiculo particular (privado)",
+        L: "Vehiculo particular (privado)",
+        N: "Vehiculo particular (privado)",
+        O: "Vehiculo particular (privado)",
+        P: "Vehiculo particular (privado)",
+        Q: "Vehiculo particular (privado)",
+        R: "Vehiculo particular (privado)",
+        T: "Vehiculo particular (privado)",
+        U: "Vehiculo particular (privado)",
+        V: "Vehiculo particular (privado)",
+        W: "Vehiculo particular (privado)",
+        Y: "Vehiculo particular (privado)",
+    };
+    let segundaLetra=placa.charAt(1);
+   if(esMayuscula(segundaLetra)){
+        mostrarTexto("lblError3","");
+        return tipoVehiculo[segundaLetra];
+    }else {
+        mostrarTexto("lblVehiculo","");
+        return "TIPO DE VEICULO INCORRECTO";
     }
 
 }

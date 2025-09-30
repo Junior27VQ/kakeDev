@@ -98,7 +98,15 @@ body{
     justify-content: center;
     align-items: center;
 }
-.resultado2{
+.provincia{
+    color: rgb(15, 15, 15);
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.vehiculo{
     color: rgb(15, 15, 15);
     display: flex;
     flex:1;

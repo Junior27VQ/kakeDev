@@ -3,11 +3,13 @@ validarPlaca=function(){
     let erroresEstructura=validarEstructura(placas);
     let provincia=obtenerProvincia(placas);
     mostrarTexto("lblProvincia",provincia);
+    let vehiculo=obtenerTipoVehiculo(placas);
+    mostrarTexto("lblVehiculo",vehiculo)
     if(erroresEstructura==true){
         mostrarTexto("lblValidar","ESTRUCTURA VALIDA");
-        limpiar("lblErrore");
+        limpiar("lblError1");
     }else{
-        mostrarTexto("lblErrore","ESTRUCTURA INCORRECTA");
+        mostrarTexto("lblError1","ESTRUCTURA INCORRECTA");
         limpiar("lblValidar");
     }
 }
