@@ -1,14 +1,14 @@
 validarEstructura = function (placa) {
 
     if (placa.length >= 0 && placa.length <= 8) {
-        
+
         if (digitoUno(placa) & digitoDos(placa) & digitoTres(placa) & digitoCuatro(placa) &
             digitoCinco(placa) & digitoSeis(placa) & digitoSiete(placa) & digitoOcho(placa)) {
-        mostrarTexto("lblError","");    
-        return true;
+            mostrarTexto("lblError", "");
+            return true;
         }
     } else {
-        let error=mostrarTexto("lblError","La placa deve tener 7 u 8 caracteres");
+        let error = mostrarTexto("lblError", "La placa deve tener 7 u 8 caracteres");
         return (error);
     }
 }
@@ -77,3 +77,37 @@ digitoOcho = function (caracter) {
     }
 }
 
+obtenerProvincia = function (placa) {
+    let provinciaPorPlaca = {
+        A: "Azuay",
+        B: "Bolivar",
+        U: "Cañar",
+        C: "Carchi",
+        X: "Cotopaxi",
+        H: "Chimborazo",
+        O: "El Oro",
+        E: "Esmeraldas",
+        W: "Galapagos",
+        G: "Guayas",
+        I: "Imbabuara",
+        L: "Loja",
+        R: "Los Rios",
+        M: "Manabi",
+        V: "Morona Santiago",
+        N: "Napo",
+        S: "Pastaza",
+        P: "Pichincha",
+        K: "Sucumbios",
+        Q: "Orellana",
+        T: "Tungurahua",
+        Z: "Zamora Chinchipe",
+        Y: "Santa Elena",
+    };
+    let primeraLetra=placa.charAt(0);
+    if(esMayuscula(primeraLetra)){
+        return provinciaPorPlaca[primeraLetra];
+    }else{
+        return "PROVINCIA INCORRECTA";
+    }
+
+}

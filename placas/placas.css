@@ -98,3 +98,11 @@ body{
     justify-content: center;
     align-items: center;
 }
+.resultado2{
+    color: rgb(15, 15, 15);
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
