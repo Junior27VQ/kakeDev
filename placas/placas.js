@@ -9,12 +9,21 @@ validarPlaca=function(){
     mostrarTexto("lblDiaPicoYPlaca",picoyplaca);
     if(erroresEstructura==true){
         mostrarTexto("lblValidar","ESTRUCTURA VALIDA");
-        limpiar("lblError1");
+        mostrarTexto("lblError1","");
     }else{
         mostrarTexto("lblError1","ESTRUCTURA INCORRECTA");
-        limpiar("lblValidar");
+        mostrarTexto("lblValidar","");
     }
 }
-limpiar=function(idError){
-    mostrarTexto(idError,"");
+limpiar=function(){
+    mostrarTextoEnCaja("txtValidarPlaca","");
+    mostrarTexto("lblError","");
+    mostrarTexto("lblValidar","");
+    mostrarTexto("lblError1","");
+    mostrarTexto("lblProvincia","");
+    mostrarTexto("lblError2","");
+    mostrarTexto("lblVehiculo","");
+    mostrarTexto("lblError3","");
+    mostrarTexto("lblDiaPicoYPlaca","");
+    mostrarTexto("lblError4","");
 }
