@@ -4,7 +4,9 @@ validarPlaca=function(){
     let provincia=obtenerProvincia(placas);
     mostrarTexto("lblProvincia",provincia);
     let vehiculo=obtenerTipoVehiculo(placas);
-    mostrarTexto("lblVehiculo",vehiculo)
+    mostrarTexto("lblVehiculo",vehiculo);
+    let picoyplaca=obtenerDiaPicoYPlaca(placas);
+    mostrarTexto("lblDiaPicoYPlaca",picoyplaca);
     if(erroresEstructura==true){
         mostrarTexto("lblValidar","ESTRUCTURA VALIDA");
         limpiar("lblError1");

@@ -98,8 +98,19 @@ body{
     justify-content: center;
     align-items: center;
 }
+.respuesta{
+    background-color:yellow;
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    margin: 10px;
+}
 .provincia{
-    color: rgb(15, 15, 15);
+    color: rgb(1, 22, 6);
     display: flex;
     flex:1;
     flex-direction: column;
@@ -107,7 +118,15 @@ body{
     align-items: center;
 }
 .vehiculo{
-    color: rgb(15, 15, 15);
+    color: rgb(5, 22, 13);
+    display: flex;
+    flex:1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.picoyplaca{
+    color: rgb(27, 43, 35);
     display: flex;
     flex:1;
     flex-direction: column;

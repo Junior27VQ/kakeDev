@@ -152,3 +152,21 @@ obtenerTipoVehiculo = function (placa) {
     }
 
 }
+obtenerDiaPicoYPlaca=function(placa){
+    let ultimaPosicion=placa.length-1;
+    let ultimoDigito=placa.charAt(ultimaPosicion);
+    let digitoNumero=parseInt(ultimoDigito);
+    if(digitoNumero == 1 || digitoNumero == 2){
+        return "Lunes";
+    }else if(digitoNumero == 3 || digitoNumero ==4){
+        return "Martes";
+    }else if(digitoNumero == 5 || digitoNumero ==6){
+        return "Miercoles";
+    }else if(digitoNumero ==7 || digitoNumero ==8){
+        return "Jueves";
+    }else if(digitoNumero ==9 || digitoNumero ==0){
+        return "Viernes";
+    }else {
+        return "Sabados, Domingos y Feriados";
+    }
+}
