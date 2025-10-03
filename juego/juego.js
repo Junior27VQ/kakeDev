@@ -3,11 +3,16 @@ let puntosComputador=0;
 modificarPuntosUsuario=function(valor){
     puntosUsuario=puntosUsuario+valor;
     mostrarTexto("lblUsuario",puntosUsuario);
-    
+    if(puntosUsuario==5){
+        mostrarTexto("lblRespuesta","HAS GANADO EL JUEGO");
+    }
 }
 modificarPuntosComputador=function(valor){
     puntosComputador=puntosComputador+valor;
     mostrarTexto("lblComputador",puntosComputador);
+    if(puntosComputador==5){
+        mostrarTexto("lblRespuesta","EL COMPUTADOR TE HA VENCIDO")
+    }
     
 }
 jugar=function(seleccionado){
