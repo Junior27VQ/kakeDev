@@ -32,3 +32,9 @@ jugar=function(seleccionado){
     
     
 }
+limpiar=function(){
+    mostrarTexto("lblRespuesta","");
+    mostrarTexto("lblUsuario","");
+    mostrarTexto("lblComputador","");
+    mostrarImagen("imgJuego","");
+}
