@@ -14,16 +14,16 @@ guardarPalabra = function () {
     let caracteres = recuperarTexto("txtSecreta");
     if (caracteres.length == 5) {
 
-        for (i = 0; i <= caracteres.length; i++) {
+        for (i = 0; i <= caracteres.length-1; i++) {
             palabra = caracteres.charAt(i);
             if (esMayuscula(palabra)) {
                 palabraSecreta = palabraSecreta + palabra;
             } else if (!esMayuscula(palabra)) {
                 esValido = false;
             }
-        }
-    } if (esValido == false) {
+        } if (esValido == false) {
         alert("debe ingresar una palabra de 5 letras mayusculas");
+        }
     } else {
         alert("debe ingresar una palabra de 5 letras mayusculas");
     }
@@ -43,11 +43,19 @@ mostrarLetra = function (letra, posicion) {
 }
 validar=function(letra){
     let letrasEncontradas;
-    for(let posicion=0;posicion<=palabraSecreta.length;posicion++){
+    for(let posicion=0;posicion<=palabraSecreta.length-1;posicion++){
         letrasEncontradas=palabraSecreta.charAt(posicion);
         if(letrasEncontradas==letra){
         mostrarLetra(letra,posicion);
         letrasEncontradas=letrasEncontradas+letra;
         }
+    }
+}
+ingresarLetra=function(){
+    let letra=recuperarTexto("txtLetra");
+    if(esMayuscula(letra)){
+        validar(letra);
+    }else{
+        alert("SOLO SE ACEPTAN LETRAS MAYUSCULAS");
     }
 }
