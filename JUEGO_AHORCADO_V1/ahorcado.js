@@ -57,9 +57,8 @@ validar=function(letra){
         }
     }
     if (correcto==false){
-    alert("LA LETRA NO ES PARTE DE LA PALABRA")
-    errores++;
-    mostrarAhorcado();
+        errores++;
+        mostrarAhorcado();
     }
 }
 ingresarLetra=function(){
@@ -68,9 +67,9 @@ ingresarLetra=function(){
     if(esMayuscula(letra)){
         validar(letra);
         if(coincidencias==5){
-            alert("HA GANADO");
+            mostrarImagen("ahorcadoImagen","ganador.gif");
         }else if(intentos==10){
-            alert("HA PERDIDO");
+            mostrarImagen("ahorcadoImagen","gameOver.gif");
         }
     }else{
         alert("SOLO SE ACEPTAN LETRAS MAYUSCULAS");
