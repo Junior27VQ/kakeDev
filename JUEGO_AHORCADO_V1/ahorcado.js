@@ -41,3 +41,13 @@ mostrarLetra = function (letra, posicion) {
         mostrarTexto("div4", letra)
     }
 }
+validar=function(letra){
+    let letrasEncontradas;
+    for(let posicion=0;posicion<=palabraSecreta.length;posicion++){
+        letrasEncontradas=palabraSecreta.charAt(posicion);
+        if(letrasEncontradas==letra){
+        mostrarLetra(letra,posicion);
+        letrasEncontradas=letrasEncontradas+letra;
+        }
+    }
+}
