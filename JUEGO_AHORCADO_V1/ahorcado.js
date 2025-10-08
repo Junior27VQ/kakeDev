@@ -10,7 +10,7 @@ esMayuscula = function (caracter) {
 }
 guardarPalabra = function () {
     let palabra;
-    let esValido=true;
+    let esValido = true;
     let caracteres = recuperarTexto("txtSecreta");
     if (caracteres.length == 5) {
 
@@ -18,13 +18,26 @@ guardarPalabra = function () {
             palabra = caracteres.charAt(i);
             if (esMayuscula(palabra)) {
                 palabraSecreta = palabraSecreta + palabra;
-            } else if(!esMayuscula(palabra)){
-                esValido=false;
+            } else if (!esMayuscula(palabra)) {
+                esValido = false;
             }
         }
-    } if(esValido==false){
+    } if (esValido == false) {
         alert("debe ingresar una palabra de 5 letras mayusculas");
-    }else{
+    } else {
         alert("debe ingresar una palabra de 5 letras mayusculas");
+    }
+}
+mostrarLetra = function (letra, posicion) {
+    if (posicion == 0) {
+        mostrarTexto("div0", letra)
+    } else if (posicion == 1) {
+        mostrarTexto("div1", letra)
+    } else if (posicion == 2) {
+        mostrarTexto("div2", letra)
+    } else if (posicion == 3) {
+        mostrarTexto("div3", letra)
+    } else if (posicion == 4) {
+        mostrarTexto("div4", letra)
     }
 }
