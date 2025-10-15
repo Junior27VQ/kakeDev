@@ -11,10 +11,10 @@ recorrerCadenas=function(cadena){
 }
 ejecutarPrueba2=function(){
     let mensaje=recuperarTexto("txtCadena");
-    let respuesta=recorrerCadenasInvertidas(mensaje);
+    let respuesta=invertirCadena(mensaje);
     cambiarTexto("lblInvertido",respuesta)
 }
-recorrerCadenasInvertidas=function(cadena){
+invertirCadena=function(cadena){
     let caracter;
     let cadenaInvertida="";
     for(let posicion=cadena.length-1;posicion>=0;posicion--){
