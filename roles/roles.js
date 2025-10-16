@@ -50,6 +50,7 @@ guardar = function () {
         alert("YA EXISTE UN EMPLEADO CON LA CEDULA: " + empleado.cedula);
        }
     }
+    ejecutarCancelar();
 }
 function agregarEmpleado(empleado) {
     let resultado = buscarEmpleado(empleado.cedula);
@@ -79,7 +80,7 @@ mostrarOpcionEmpleados = function () {
     ocultarComponente("divRol");
     ocultarComponente("divResumen");
     mostrarEmpleados();
-    esNuevo = false;
+    ejecutarCancelar();
 }
 mostrarOpcionRoles = function () {
     mostrarComponente("divRol");
@@ -99,35 +100,11 @@ ejecutarNuevo = function () {
     habilitarComponente("btnGuardar");
     esNuevo = true;
 }
-guardar1 = function () {
-    let recuperarCedula = recuperarTexto("txtCedula");
-    let recuperarNombre = recuperarTexto("txtNombre");
-    let recuperarApellido = recuperarTexto("txtApellido");
-    let recuperarSueldo = recuperarFloat("txtSueldo");
-    if (recuperarCedula.length != 10) {
-        mostrarTexto("lblErrorCedula", "La cedula debe tener 10 caracteres");
-        esNuevo = false;
-    }
-    if (recuperarNombre.length > 3) {
-        mostrarTexto("lblErrorNombre", "El nombre debe tener maxim 3 caracteres");
-        esNuevo = false;
-    }
-    if (recuperarApellido.length > 3) {
-        mostrarTexto("lblErrorApellido", "El apellido debe tener maxim 3 caracteres");
-        esNuevo = false;
-    }
-    if (recuperarSueldo < 400 || recuperarSueldo > 500) {
-        mostrarTexto("lblErrorSueldo", "El sueldo debe ser mayor a 0");
-        esNuevo = false;
-    }
-    if (esNuevo == true) {
-        let empleado = { cedula: recuperarCedula, nombre: recuperarNombre, apellido: recuperarApellido, sueldo: recuperarSueldo };
-        let nuevo = agregarEmpleado(empleado);
-
-        alert("Empleado guardado correctamente: " + nuevo);
-        mostrarEmpleados();
-
-    } else {
-        alert("LLA EXISTE UN EMPLEADO CON LA CEDULA: " + empleados.cedula);
-    }
+ejecutarCancelar = function () {
+    deshabilitarComponente("txtCedula");
+    deshabilitarComponente("txtNombre");
+    deshabilitarComponente("txtApellido");
+    deshabilitarComponente("txtSueldo");
+    deshabilitarComponente("btnGuardar");
+    esNuevo = false;
 }
