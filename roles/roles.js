@@ -44,25 +44,25 @@ guardar = function () {
     if (esNuevo == true) {
         let empleado = { cedula: recuperarCedula, nombre: recuperarNombre, apellido: recuperarApellido, sueldo: recuperarSueldo };
         let nuevo = agregarEmpleado(empleado);
-        esNuevo=false;
+        esNuevo = false;
         if (nuevo == true) {
             alert("EMPLEADO GUARDADO CORRECTAMENTE: ");
             mostrarEmpleados();
             ejecutarCancelar();
-        }else if(esNuevo==false){
-                let retorno=buscarEmpleado(recuperarCedula);
-                if(retorno){
-                retorno.nombre=recuperarNombre;
-                retorno.apellido=recuperarApellido;
-                retorno.sueldo=recuperarSueldo;
-                 agregarEmpleado(retorno);
+        } else if (esNuevo == false) {
+            let retorno = buscarEmpleado(recuperarCedula);
+            if (retorno) {
+                retorno.nombre = recuperarNombre;
+                retorno.apellido = recuperarApellido;
+                retorno.sueldo = recuperarSueldo;
+                agregarEmpleado(retorno);
                 alert("EMPLEADO MODIFICADO EXITOSAMENTE");
                 mostrarEmpleados();
                 ejecutarCancelar();
-                }else{
+            } else {
                 alert("ERROR: No se pudo encontrar el empkeado a modificar")
-                }
-        }else {
+            }
+        } else {
             alert("YA EXISTE UN EMPLEADO CON LA CEDULA: " + empleado.cedula);
         }
     }
@@ -139,23 +139,45 @@ ejecutarCancelar = function () {
     deshabilitarComponente("btnGuardar");
     esNuevo = false;
 }
-limpiar=function(){
-    mostrarTextoEnCaja("txtCedula","");
-    mostrarTextoEnCaja("txtNombre","");
-    mostrarTextoEnCaja("txtApellido","");
-    mostrarTextoEnCaja("txtSueldo","");
+limpiar = function () {
+    mostrarTextoEnCaja("txtCedula", "");
+    mostrarTextoEnCaja("txtNombre", "");
+    mostrarTextoEnCaja("txtApellido", "");
+    mostrarTextoEnCaja("txtSueldo", "");
     ejecutarCancelar();
 }
 //funciones de Rol
-function buscarPorRol(){
-    let numeroCedula=recuperarTexto("txtBusquedaCedulaRol");
-    let saldo=buscarEmpleado(numeroCedula);
-    if(saldo!=null){
-        mostrarTexto("infoCedula",saldo.cedula);
-        mostrarTexto("infoNombre",saldo.nombre+" "+saldo.apellido);
-        mostrarTexto("infoSueldo",saldo.sueldo);
-        mostrarTextoEnCaja("txtBusquedaCedulaRol","");
-    }else{
+function buscarPorRol() {
+    let numeroCedula = recuperarTexto("txtBusquedaCedulaRol");
+    let saldo = buscarEmpleado(numeroCedula);
+    if (saldo != null) {
+        mostrarTexto("infoCedula", saldo.cedula);
+        mostrarTexto("infoNombre", saldo.nombre + " " + saldo.apellido);
+        mostrarTexto("infoSueldo", saldo.sueldo);
+        mostrarTextoEnCaja("txtBusquedaCedulaRol", "");
+    } else {
         alert("El empleado no existe")
     }
+}
+function calcularAporteEmpleado(sueldo) {
+    let valor = (sueldo * 9.45) / 100;
+    return valor;
+}
+function calcularValorAPagar(sueldoEmpleado, aporteIES, descuento) {
+    let valorAPagar = (sueldoEmpleado - aporteIES - descuento);
+    return valorAPagar
+}
+function calcularRol(){
+    let cantidad=recuperarFloatDiv("infoSueldo");
+    let digito=recuperarFloat("txtDescuentos");
+    let validarDigito=true;
+    if(!isNaN(digito)&&digito)
+        validarDigito=false;
+        if(digito>0 && digito<cantidad){
+        let aporte=calcularAporteEmpleado(cantidad);
+        mostrarTexto("infoIESS",aporte);
+        let valor=calcularValorAPagar(cantidad,aporte,digito);
+         mostrarTexto("infoPago",valor);
+        }
+    
 }
