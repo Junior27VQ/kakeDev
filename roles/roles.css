@@ -79,11 +79,11 @@ body{
     justify-content: center;
 }
 tbody tr:nth-child(odd) {
-    background-color: #908efc;
+    background-color: #61bda9;
   }
   
   tbody tr:nth-child(even) {
-    background-color: #6a51cf;
+    background-color: #61bda9;
   }
   
   tbody tr {
@@ -99,7 +99,14 @@ tbody tr:nth-child(odd) {
   }
   .areaTabla{
     margin-top: 20px;
+    width: 100%;
   }
+    th {
+        background-color: #418b43;
+        color: white;
+        padding: 10px;
+        font-size: 14px;
+    }
 .estiloBoton:hover {
     background-color:white; 
     color: #217023;

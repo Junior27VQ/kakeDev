@@ -3,7 +3,7 @@ let empleados = [
     {cedula:"0914632123",nombre:"Luisa",apellido:"Gonzalez",sueldo:900.0}
 ]
 
-mostrarEmpleado=function(){
+mostrarEmpleados=function(){
     let cmpTabla=document.getElementById("tablaEmpleados");
     let tabla="<table border='1'><tr><th>CEDULA</th><th>NOMBRE</th><th>APELLIDO</th><th>SUELDO</th></tr>";
     for(let i=0;i<empleados.length;i++){
@@ -17,7 +17,7 @@ mostrarOpcionEmpleados=function(){
     mostrarComponente("divEmpleado");
     ocultarComponente("divRol");
     ocultarComponente("divResumen");
-    mostrarEmpleado();
+    mostrarEmpleados();
 }
 mostrarOpcionRoles=function(){
     mostrarComponente("divRol");
