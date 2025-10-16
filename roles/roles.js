@@ -79,11 +79,6 @@ mostrarOpcionEmpleados = function () {
     ocultarComponente("divRol");
     ocultarComponente("divResumen");
     mostrarEmpleados();
-    deshabilitarComponente("txtCedula");
-    deshabilitarComponente("txtNombre");
-    deshabilitarComponente("txtApellido");
-    deshabilitarComponente("txtSueldo");
-    deshabilitarComponente("btnGuardar");
     esNuevo = false;
 }
 mostrarOpcionRoles = function () {
