@@ -146,3 +146,16 @@ limpiar=function(){
     mostrarTextoEnCaja("txtSueldo","");
     ejecutarCancelar();
 }
+//funciones de Rol
+function buscarPorRol(){
+    let numeroCedula=recuperarTexto("txtBusquedaCedulaRol");
+    let saldo=buscarEmpleado(numeroCedula);
+    if(saldo!=null){
+        mostrarTexto("infoCedula",saldo.cedula);
+        mostrarTexto("infoNombre",saldo.nombre+" "+saldo.apellido);
+        mostrarTexto("infoSueldo",saldo.sueldo);
+        mostrarTextoEnCaja("txtBusquedaCedulaRol","");
+    }else{
+        alert("El empleado no existe")
+    }
+}
