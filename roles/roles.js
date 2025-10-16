@@ -78,14 +78,15 @@ function agregarEmpleado(empleado) {
     }
 }
 ejecutarBusqueda = function () {
-    let cedula = recuperarInt("txtBuscarCedula");
-    let empleadoEncontrado = buscarEmpleado(cedula);
+    let buscar = recuperarFloat("txtBusquedaCedula");
+    let empleadoEncontrado = buscarEmpleado(buscar);
     if (empleadoEncontrado == null) {
         alert("EMPLEADO NO EXISTE");
     } else {
         mostrarTextoEnCaja("txtCedula", empleadoEncontrado.cedula);
         mostrarTextoEnCaja("txtNombre", empleadoEncontrado.nombre);
-        mostrarTextoEnCaja("txtEdad", empleadoEncontrado.edad);
+        mostrarTextoEnCaja("txtApellido", empleadoEncontrado.apellido);
+        mostrarTextoEnCaja("txtSueldo", empleadoEncontrado.sueldo);
         deshabilitarComponente("txtCedula");
         habilitarComponente("txtNombre");
         habilitarComponente("txtApellido");
@@ -137,4 +138,11 @@ ejecutarCancelar = function () {
     deshabilitarComponente("txtSueldo");
     deshabilitarComponente("btnGuardar");
     esNuevo = false;
+}
+limpiar=function(){
+    mostrarTextoEnCaja("txtCedula","");
+    mostrarTextoEnCaja("txtNombre","");
+    mostrarTextoEnCaja("txtApellido","");
+    mostrarTextoEnCaja("txtSueldo","");
+    ejecutarCancelar();
 }
