@@ -243,15 +243,17 @@ function mostrarRoles() {
     cmpTabla.innerHTML = tabla;
 }
 function mostrarTotales() {
-    let totalEmpleado=0;
-    let totalEmpleador=0;
-    let totalAPagar=0;
+    let totalEmpleado = 0;
+    let totalEmpleador = 0;
+    let totalAPagar = 0;
     for (let i = 0; i < roles.length; i++) {
         totalEmpleado += roles[i].aporteEmpelado;
         totalEmpleador += roles[i].aporteEmpleador;
         totalAPagar += roles[i].valorAPagar;
     }
-    mostrarTexto("infoTotalPago", totalAPagar);
-    mostrarTexto("infoAporteEmpresa", totalEmpleador);
-    mostrarTexto("infoAporteEmpleado", totalEmpleado);
+    let totalNomina = totalAPagar + totalEmpleado + totalEmpleador;
+    mostrarTexto("infoTotalPago", totalAPagar.toFixed(2));
+    mostrarTexto("infoAporteEmpresa", totalEmpleador.toFixed(2));
+    mostrarTexto("infoAporteEmpleado", totalEmpleado.toFixed(2));
+    mostrarTexto("infoTotalNomina", totalNomina.toFixed(2));
 }
