@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="orden.js"></script>
+    <script src="utilitarios.js"></script>
+    <link rel="stylesheet" href="estilo.css" />
+</head>
+
+<body>
+    <div class="plantilla">
+        <div class="datos">
+            <div class="titulo">Ingrese la Nombre</div>
+            <div>
+                <input type="text" class="cajaTexto" id="txtValidarNombre" />
+                <div class="error" id="lblError"></div>
+            </div>
+            <div class="titulo">Ingrese la Edad</div>
+            <div>
+                <input type="text" class="cajaTexto" id="txtValidarEdad" />
+                <div class="error" id="lblError0"></div>
+            </div>
+        </div>
+        <div class="boton">
+            <div class="contenido">
+                <input type="button" value="ENCONTRAR MAYOR" class="estilo" onclick="determinarMayor();" />
+            </div>
+            <div class="contenido">
+                <input type="button" value="GUARDADR" class="estilo" onclick="agregarPersona();" />
+            </div>
+            <div class="contenido">
+                <input type="button" value="ENCONTRAR MENOR" class="estilo" onclick="determinarMenor();" />
+            </div>
+        </div>
+        
+        <div class="resultado">
+            <div id="divTabla"></div>
+            <div id="lblError1"></div>
+        </div>
+
+    </div>
+    <div class="respuesta">
+        <div class="mayor">Persona Mayor
+            <div id="lblMayor"></div>
+            <div id="lblError2"></div>
+        </div>
+        <div class="menor">Persona Menor
+            <div id="lblMenor"></div>
+            <div id="lblError3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
