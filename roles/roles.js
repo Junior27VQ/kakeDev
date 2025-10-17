@@ -119,6 +119,7 @@ mostrarOpcionRoles = function () {
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
     deshabilitarComponente("btn2Guardar");
+    mostrarRoles();
 }
 mostrarOpcionResumen = function () {
     mostrarComponente("divResumen");
@@ -185,8 +186,8 @@ function calcularRol() {
     }
 
 }
-function buscarRol(cedulaEmpleado) { 
-       let elmntoEmpleado;
+function buscarRol(cedulaEmpleado) {
+    let elmntoEmpleado;
     let empleadoEncontrado = null;
     for (let i = 0; i < rol.length; i++) {
         elmntoEmpleado = rol[i];
@@ -197,37 +198,60 @@ function buscarRol(cedulaEmpleado) {
     }
     return empleadoEncontrado;
 }
-function agregarRol(objetoRol){
-    let rolEncontrado=buscarRol(rol.cedula);
-    if(rolEncontrado==null){
+function agregarRol(objetoRol) {
+    let rolEncontrado = buscarRol(rol.cedula);
+    if (rolEncontrado == null) {
         roles.push(rol);
         alert("ROL AGREGADO CORRECTAMENTE");
-    }else{
-        alert("Ya existe unrol con la cedula "+rol.cedula);
+    } else {
+        alert("Ya existe unrol con la cedula " + rol.cedula);
     }
     return rolEncontrado;
 }
-function calcularAporteEmpleador(sueldo){
+function calcularAporteEmpleador(sueldo) {
     let valor = (sueldo * 11.15) / 100;
     return valor;
 }
-function guardarRol(){
+function guardarRol() {
     let numcedula = recuperarDiv("infoCedula");
     let prinombre = recuperarDiv("infoNombre");
     let digsueldo = recuperarDiv("infoSueldo");
     let valor = calcularRol();
-    let aporEmpleado=calcularAporteEmpleado(digsueldo);
+    let aporEmpleado = calcularAporteEmpleado(digsueldo);
     let aporEmplador = calcularAporteEmpleador(digsueldo);
-    rol.cedula=numcedula;
-    rol.nombre=prinombre;
-    rol.sueldo=digsueldo;
-    rol.valorAPagar=valor;
-    rol.aporteEmpelado=aporEmpleado;
-    rol.apoerteEmpleador=aporEmplador
-    let rolAgregado=agregarRol(rol);
-    if(rolAgregado==null){
+    rol.cedula = numcedula;
+    rol.nombre = prinombre;
+    rol.sueldo = digsueldo;
+    rol.valorAPagar = valor;
+    rol.aporteEmpelado = aporEmpleado;
+    rol.aporteEmpleador = aporEmplador;
+    let rolAgregado = agregarRol(rol);
+    if (rolAgregado == null) {
         alert("EXITO");
         deshabilitarComponente("btn2Guardar");
     }
-
+    mostrarRoles();
+    mostrarTotales();
+}
+function mostrarRoles() {
+    let cmpTabla = document.getElementById("tablaResumen");
+    let tabla = "<table border='1'><tr><th>CEDULA</th><th>NOMBRE</th><th>VALOR A PAGAR</th><th>APORTE EMPLEADO</th><th>APORTE EMPLEADOR</th></tr>";
+    for (let i = 0; i < roles.length; i++) {
+        tabla += "<tr><td>" + roles[i].cedula + "</td><td>" + roles[i].nombre + "</td><td>" + roles[i].valorAPagar + "</td><td>" + roles[i].aporteEmpelado + "</td><td>" + roles[i].aporteEmpleador + "</td></tr>";
+    }
+    tabla += "</table>";
+    cmpTabla.innerHTML = tabla;
+}
+function mostrarTotales() {
+    let totalEmpleado=0;
+    let totalEmpleador=0;
+    let totalAPagar=0;
+    for (let i = 0; i < roles.length; i++) {
+        totalEmpleado += roles[i].aporteEmpelado;
+        totalEmpleador += roles[i].aporteEmpleador;
+        totalAPagar += roles[i].valorAPagar;
+    }
+    mostrarTexto("infoTotalPago", totalAPagar);
+    mostrarTexto("infoAporteEmpresa", totalEmpleador);
+    mostrarTexto("infoAporteEmpleado", totalEmpleado);
 }
