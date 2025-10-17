@@ -3,7 +3,8 @@ let empleados = [
     { cedula: "0914632123", nombre: "Luisa", apellido: "Gonzalez", sueldo: 900.0 }
 ]
 let esNuevo = false;
-
+let roles = []
+let rol = {}
 mostrarEmpleados = function () {
     let cmpTabla = document.getElementById("tablaEmpleados");
     let tabla = "<table border='1'><tr><th>CEDULA</th><th>NOMBRE</th><th>APELLIDO</th><th>SUELDO</th></tr>";
@@ -117,6 +118,7 @@ mostrarOpcionRoles = function () {
     mostrarComponente("divRol");
     ocultarComponente("divEmpleado");
     ocultarComponente("divResumen");
+    deshabilitarComponente("btn2Guardar");
 }
 mostrarOpcionResumen = function () {
     mostrarComponente("divResumen");
@@ -167,17 +169,65 @@ function calcularValorAPagar(sueldoEmpleado, aporteIES, descuento) {
     let valorAPagar = (sueldoEmpleado - aporteIES - descuento);
     return valorAPagar
 }
-function calcularRol(){
-    let cantidad=recuperarFloatDiv("infoSueldo");
-    let digito=recuperarFloat("txtDescuentos");
-    let validarDigito=true;
-    if(!isNaN(digito)&&digito)
-        validarDigito=false;
-        if(digito>0 && digito<cantidad){
-        let aporte=calcularAporteEmpleado(cantidad);
-        mostrarTexto("infoIESS",aporte);
-        let valor=calcularValorAPagar(cantidad,aporte,digito);
-         mostrarTexto("infoPago",valor);
+function calcularRol() {
+    let cantidad = recuperarFloatDiv("infoSueldo");
+    let digito = recuperarFloat("txtDescuentos");
+    let validarDigito = true;
+    if (!isNaN(digito) && digito)
+        validarDigito = false;
+    if (digito > 0 && digito < cantidad) {
+        let aporte = calcularAporteEmpleado(cantidad);
+        mostrarTexto("infoIESS", aporte);
+        let valor = calcularValorAPagar(cantidad, aporte, digito);
+        mostrarTexto("infoPago", valor);
+        habilitarComponente("btn2Guardar");
+        return valor;
+    }
+
+}
+function buscarRol(cedulaEmpleado) { 
+       let elmntoEmpleado;
+    let empleadoEncontrado = null;
+    for (let i = 0; i < rol.length; i++) {
+        elmntoEmpleado = rol[i];
+        if (elmntoEmpleado.cedula == cedulaEmpleado) {
+            empleadoEncontrado = elmntoEmpleado;
+            break;
         }
-    
+    }
+    return empleadoEncontrado;
+}
+function agregarRol(objetoRol){
+    let rolEncontrado=buscarRol(rol.cedula);
+    if(rolEncontrado==null){
+        roles.push(rol);
+        alert("ROL AGREGADO CORRECTAMENTE");
+    }else{
+        alert("Ya existe unrol con la cedula "+rol.cedula);
+    }
+    return rolEncontrado;
+}
+function calcularAporteEmpleador(sueldo){
+    let valor = (sueldo * 11.15) / 100;
+    return valor;
+}
+function guardarRol(){
+    let numcedula = recuperarDiv("infoCedula");
+    let prinombre = recuperarDiv("infoNombre");
+    let digsueldo = recuperarDiv("infoSueldo");
+    let valor = calcularRol();
+    let aporEmpleado=calcularAporteEmpleado(digsueldo);
+    let aporEmplador = calcularAporteEmpleador(digsueldo);
+    rol.cedula=numcedula;
+    rol.nombre=prinombre;
+    rol.sueldo=digsueldo;
+    rol.valorAPagar=valor;
+    rol.aporteEmpelado=aporEmpleado;
+    rol.apoerteEmpleador=aporEmplador
+    let rolAgregado=agregarRol(rol);
+    if(rolAgregado==null){
+        alert("EXITO");
+        deshabilitarComponente("btn2Guardar");
+    }
+
 }
